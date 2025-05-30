@@ -27,6 +27,7 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
     endDate: null,
   });
   const debouncedSearch = useDebounce(search, 500); // 500ms debounce
+  const [selectedSearch, setSelectedSearch] = useState(null);
 
   const toggleFilterOption = (key) => {
     setFilterOptions((prev) => ({
@@ -36,6 +37,7 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
   };
 
   useEffect(() => {
+    setSelectedSearch(searchOptions?.find(a => a.value === searchBy))
     if (onFilterChange) {
       onFilterChange({
         searchBy,
@@ -58,7 +60,7 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
           size="small"
           sx={{ minWidth: 150 }}
         >
-          {searchOptions.map((option) => (
+          {searchOptions?.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
@@ -66,6 +68,7 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
         </TextField>
 
         <TextField
+          select={selectedSearch?.options}
           variant="outlined"
           placeholder={`Cari berdasarkan ${(searchOptions.find((option) => option.value === searchBy)?.label || "").toLowerCase()
             }`}
@@ -73,6 +76,7 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
           size="small"
           disabled={searchOptions.length === 0}
           value={search}
+          sx={{width: '300px'}}
           onChange={(e) => setSearch(e.target.value)}
           InputProps={{
             endAdornment: (
@@ -81,11 +85,13 @@ export default function SearchBarWithFilter({ onFilterChange, renderFilterConten
               </InputAdornment>
             ),
           }}
-        />
-
-        {/*<IconButton onClick={() => setFilterDialogOpen(true)}>*/}
-        {/*  <FilterListIcon />*/}
-        {/*</IconButton>*/}
+        >
+          {selectedSearch?.options?.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </Box>
 
       <Dialog open={filterDialogOpen}

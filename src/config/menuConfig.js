@@ -21,6 +21,12 @@ export const menuConfig = {
           path: '/informasi-sekolah',
         },
         {
+          text: 'Tahun Pelajaran',
+          title: 'Tahun Pelajaran',
+          icon: 'WaterfallChart',
+          path: '/config/tahun-pelajaran',
+        },
+        {
           text: 'Kelas',
           title: 'Kelas',
           icon: 'Groups2Rounded',
@@ -43,6 +49,29 @@ export const menuConfig = {
           title: 'Data Siswa',
           icon: 'SchoolRounded',
           path: '/data-siswa',
+        },
+      ],
+    },
+    {
+      title: 'PPDB',
+      menu: [
+        {
+          text: 'Landing Page',
+          title: 'Konfigurasi Landing Page',
+          icon: 'Language',
+          path: '/ppdb/landing-page',
+        },
+        {
+          text: 'PPDB Pendaftaran',
+          title: 'Konfigurasi PPDB Pendaftaran',
+          icon: 'EventAvailable',
+          path: '/ppdb/config/register-ppdb',
+        },
+        {
+          text: 'Calon Siswa',
+          title: 'Calon Siswa',
+          icon: 'GroupAdd',
+          path: '/ppdb/calon-siswa',
         },
       ],
     },

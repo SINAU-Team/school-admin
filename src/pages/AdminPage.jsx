@@ -32,11 +32,22 @@ import SchoolProfile from './schoolprofile/SchoolProfile.jsx';
 import DashboardPage from "./dashboard/DashboardPage.jsx";
 import ReportPage from "./report/ReportPage.jsx";
 import ExamBankQuestionPage from "./exams/detail/bank/ExamBankQuestionPage.jsx";
+import CourseYearPage from "./courseyear/CourseYearPage.jsx";
+import PPDBLandingPage from "./ppdb/landingpage/PPDBLandingPage.jsx";
+import PPDBSchedulePage from "./ppdb/register/PPDBSchedulePage.jsx";
+import PPDBStudentPage from "./ppdb/student/PPDBStudentPage.jsx";
+import CourseYearCreatePage from "./courseyear/add/CourseYearCreatePage.jsx";
 
 function AdminPage({ role }) {
   return (
     <Routes>
       <Route path="dashboard" element={<DashboardPage role={role} />} />
+      <Route path="config/tahun-pelajaran" element={<CourseYearPage role={role} /> } />
+      <Route path="config/tahun-pelajaran/create" element={<CourseYearCreatePage /> } />
+      <Route path="config/tahun-pelajaran/:id/update" element={<CourseYearCreatePage isUpdatePage={true} /> } />
+      <Route path="ppdb/landing-page" element={<PPDBLandingPage role={role} /> } />
+      <Route path="ppdb/config/register-ppdb" element={<PPDBSchedulePage role={role} /> } />
+      <Route path="ppdb/calon-siswa" element={<PPDBStudentPage role={role} /> } />
 
       <Route path="guru" element={<TeacherList />} />
       <Route path="guru/tambah" element={<TeacherCreate />} />
