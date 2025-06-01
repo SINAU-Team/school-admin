@@ -37,6 +37,8 @@ import PPDBLandingPage from "./ppdb/landingpage/PPDBLandingPage.jsx";
 import PPDBSchedulePage from "./ppdb/register/PPDBSchedulePage.jsx";
 import PPDBStudentPage from "./ppdb/student/PPDBStudentPage.jsx";
 import CourseYearCreatePage from "./courseyear/add/CourseYearCreatePage.jsx";
+import PPDBScheduleCreatePage from "./ppdb/register/add/PPDBScheduleCreatePage.jsx";
+import PPDBStudentDetailPage from "./ppdb/student/PPDBStudentDetailPage.jsx";
 
 function AdminPage({ role }) {
   return (
@@ -47,7 +49,10 @@ function AdminPage({ role }) {
       <Route path="config/tahun-pelajaran/:id/update" element={<CourseYearCreatePage isUpdatePage={true} /> } />
       <Route path="ppdb/landing-page" element={<PPDBLandingPage role={role} /> } />
       <Route path="ppdb/config/register-ppdb" element={<PPDBSchedulePage role={role} /> } />
+      <Route path="ppdb/config/register-ppdb/create" element={<PPDBScheduleCreatePage role={role} /> } />
+      <Route path="ppdb/config/register-ppdb/:id/update" element={<PPDBScheduleCreatePage isUpdatePage={true} role={role} /> } />
       <Route path="ppdb/calon-siswa" element={<PPDBStudentPage role={role} /> } />
+      <Route path="ppdb/calon-siswa/:id/detail" element={<PPDBStudentDetailPage role={role} /> } />
 
       <Route path="guru" element={<TeacherList />} />
       <Route path="guru/tambah" element={<TeacherCreate />} />
